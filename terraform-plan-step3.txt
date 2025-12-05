@@ -1,0 +1,30 @@
+aws_vpc.test_vpc: Refreshing state... [id=vpc-032c236a15adbd5ae]
+aws_security_group.test_sg: Refreshing state... [id=sg-04ad30f8c2f96a412]
+aws_security_group_rule.allow_http: Refreshing state... [id=sgrule-3655108427]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_vpc_security_group_ingress_rule.allow_https will be created
+  + resource "aws_vpc_security_group_ingress_rule" "allow_https" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "0.0.0.0/0"
+      + description            = "Allow HTTPS from anywhere (using aws_vpc_security_group_ingress_rule)"
+      + from_port              = 443
+      + id                     = (known after apply)
+      + ip_protocol            = "tcp"
+      + security_group_id      = "sg-04ad30f8c2f96a412"
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {}
+      + to_port                = 443
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
