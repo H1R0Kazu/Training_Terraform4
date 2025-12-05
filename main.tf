@@ -18,23 +18,23 @@ resource "aws_security_group" "test_sg" {
   }
 }
 
-# 2. aws_security_group_rule でルールを追加
-resource "aws_security_group_rule" "allow_http" {
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.test_sg.id
-  description       = "Allow HTTP from anywhere (using aws_security_group_rule)"
-}
+# 2. aws_security_group_rule でルールを追加（ステップ2で有効化）
+# resource "aws_security_group_rule" "allow_http" {
+#   type              = "ingress"
+#   from_port         = 80
+#   to_port           = 80
+#   protocol          = "tcp"
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   security_group_id = aws_security_group.test_sg.id
+#   description       = "Allow HTTP from anywhere (using aws_security_group_rule)"
+# }
 
-# 3. aws_vpc_security_group_ingress_rule でルールを追加
-resource "aws_vpc_security_group_ingress_rule" "allow_https" {
-  security_group_id = aws_security_group.test_sg.id
-  from_port         = 443
-  to_port           = 443
-  ip_protocol       = "tcp"
-  cidr_ipv4         = "0.0.0.0/0"
-  description       = "Allow HTTPS from anywhere (using aws_vpc_security_group_ingress_rule)"
-}
+# 3. aws_vpc_security_group_ingress_rule でルールを追加（ステップ3で有効化）
+# resource "aws_vpc_security_group_ingress_rule" "allow_https" {
+#   security_group_id = aws_security_group.test_sg.id
+#   from_port         = 443
+#   to_port           = 443
+#   ip_protocol       = "tcp"
+#   cidr_ipv4         = "0.0.0.0/0"
+#   description       = "Allow HTTPS from anywhere (using aws_vpc_security_group_ingress_rule)"
+# }
