@@ -28,3 +28,6 @@ terraform.rc
 
 # Lock file (optional - some teams commit this, some don't)
 # .terraform.lock.hcl
+
+# Backup files
+*.bak
