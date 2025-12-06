@@ -29,16 +29,16 @@ resource "aws_security_group" "pattern1_sg" {
   }
 }
 
-# 外部リソースでHTTPルールを追加 → 競合の可能性（パターン1検証時に有効化）
-# resource "aws_security_group_rule" "pattern1_http" {
-#   type              = "ingress"
-#   from_port         = 80
-#   to_port           = 80
-#   protocol          = "tcp"
-#   cidr_blocks       = ["0.0.0.0/0"]
-#   security_group_id = aws_security_group.pattern1_sg.id
-#   description       = "HTTP (using aws_security_group_rule)"
-# }
+# 外部リソースでHTTPルールを追加 → 競合の可能性
+resource "aws_security_group_rule" "pattern1_http" {
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.pattern1_sg.id
+  description       = "HTTP (using aws_security_group_rule)"
+}
 
 # =====================================
 # パターン2: インライン + aws_vpc_security_group_ingress_rule
