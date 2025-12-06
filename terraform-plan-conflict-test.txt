@@ -1,0 +1,203 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # aws_security_group.pattern1_sg will be created
+  + resource "aws_security_group" "pattern1_sg" {
+      + arn                    = (known after apply)
+      + description            = "Testing inline ingress + aws_security_group_rule"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "SSH (inline rule)"
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+            },
+        ]
+      + name                   = "pattern1-inline-and-sg-rule"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "pattern1-sg"
+        }
+      + tags_all               = {
+          + "Name" = "pattern1-sg"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_security_group.pattern2_sg will be created
+  + resource "aws_security_group" "pattern2_sg" {
+      + arn                    = (known after apply)
+      + description            = "Testing inline ingress + aws_vpc_security_group_ingress_rule"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "SSH (inline rule)"
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+            },
+        ]
+      + name                   = "pattern2-inline-and-vpc-sg-rule"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "pattern2-sg"
+        }
+      + tags_all               = {
+          + "Name" = "pattern2-sg"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_security_group.pattern3_sg will be created
+  + resource "aws_security_group" "pattern3_sg" {
+      + arn                    = (known after apply)
+      + description            = "Testing inline ingress + both external rule types"
+      + egress                 = (known after apply)
+      + id                     = (known after apply)
+      + ingress                = [
+          + {
+              + cidr_blocks      = [
+                  + "0.0.0.0/0",
+                ]
+              + description      = "SSH (inline rule)"
+              + from_port        = 22
+              + ipv6_cidr_blocks = []
+              + prefix_list_ids  = []
+              + protocol         = "tcp"
+              + security_groups  = []
+              + self             = false
+              + to_port          = 22
+            },
+        ]
+      + name                   = "pattern3-inline-and-both-rules"
+      + name_prefix            = (known after apply)
+      + owner_id               = (known after apply)
+      + revoke_rules_on_delete = false
+      + tags                   = {
+          + "Name" = "pattern3-sg"
+        }
+      + tags_all               = {
+          + "Name" = "pattern3-sg"
+        }
+      + vpc_id                 = (known after apply)
+    }
+
+  # aws_security_group_rule.pattern1_http will be created
+  + resource "aws_security_group_rule" "pattern1_http" {
+      + cidr_blocks              = [
+          + "0.0.0.0/0",
+        ]
+      + description              = "HTTP (using aws_security_group_rule)"
+      + from_port                = 80
+      + id                       = (known after apply)
+      + protocol                 = "tcp"
+      + security_group_id        = (known after apply)
+      + security_group_rule_id   = (known after apply)
+      + self                     = false
+      + source_security_group_id = (known after apply)
+      + to_port                  = 80
+      + type                     = "ingress"
+    }
+
+  # aws_security_group_rule.pattern3_http will be created
+  + resource "aws_security_group_rule" "pattern3_http" {
+      + cidr_blocks              = [
+          + "0.0.0.0/0",
+        ]
+      + description              = "HTTP (using aws_security_group_rule)"
+      + from_port                = 80
+      + id                       = (known after apply)
+      + protocol                 = "tcp"
+      + security_group_id        = (known after apply)
+      + security_group_rule_id   = (known after apply)
+      + self                     = false
+      + source_security_group_id = (known after apply)
+      + to_port                  = 80
+      + type                     = "ingress"
+    }
+
+  # aws_vpc.conflict_test_vpc will be created
+  + resource "aws_vpc" "conflict_test_vpc" {
+      + arn                                  = (known after apply)
+      + cidr_block                           = "10.1.0.0/16"
+      + default_network_acl_id               = (known after apply)
+      + default_route_table_id               = (known after apply)
+      + default_security_group_id            = (known after apply)
+      + dhcp_options_id                      = (known after apply)
+      + enable_dns_hostnames                 = (known after apply)
+      + enable_dns_support                   = true
+      + enable_network_address_usage_metrics = (known after apply)
+      + id                                   = (known after apply)
+      + instance_tenancy                     = "default"
+      + ipv6_association_id                  = (known after apply)
+      + ipv6_cidr_block                      = (known after apply)
+      + ipv6_cidr_block_network_border_group = (known after apply)
+      + main_route_table_id                  = (known after apply)
+      + owner_id                             = (known after apply)
+      + tags                                 = {
+          + "Name" = "conflict-test-vpc"
+        }
+      + tags_all                             = {
+          + "Name" = "conflict-test-vpc"
+        }
+    }
+
+  # aws_vpc_security_group_ingress_rule.pattern2_https will be created
+  + resource "aws_vpc_security_group_ingress_rule" "pattern2_https" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "0.0.0.0/0"
+      + description            = "HTTPS (using aws_vpc_security_group_ingress_rule)"
+      + from_port              = 443
+      + id                     = (known after apply)
+      + ip_protocol            = "tcp"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {}
+      + to_port                = 443
+    }
+
+  # aws_vpc_security_group_ingress_rule.pattern3_https will be created
+  + resource "aws_vpc_security_group_ingress_rule" "pattern3_https" {
+      + arn                    = (known after apply)
+      + cidr_ipv4              = "0.0.0.0/0"
+      + description            = "HTTPS (using aws_vpc_security_group_ingress_rule)"
+      + from_port              = 443
+      + id                     = (known after apply)
+      + ip_protocol            = "tcp"
+      + security_group_id      = (known after apply)
+      + security_group_rule_id = (known after apply)
+      + tags_all               = {}
+      + to_port                = 443
+    }
+
+Plan: 8 to add, 0 to change, 0 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
