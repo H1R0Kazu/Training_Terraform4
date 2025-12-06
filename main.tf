@@ -62,15 +62,15 @@ resource "aws_security_group" "pattern2_sg" {
   }
 }
 
-# 外部リソースでHTTPSルールを追加 → 競合の可能性（パターン2検証時に有効化）
-# resource "aws_vpc_security_group_ingress_rule" "pattern2_https" {
-#   security_group_id = aws_security_group.pattern2_sg.id
-#   from_port         = 443
-#   to_port           = 443
-#   ip_protocol       = "tcp"
-#   cidr_ipv4         = "0.0.0.0/0"
-#   description       = "HTTPS (using aws_vpc_security_group_ingress_rule)"
-# }
+# 外部リソースでHTTPSルールを追加 → 競合の可能性
+resource "aws_vpc_security_group_ingress_rule" "pattern2_https" {
+  security_group_id = aws_security_group.pattern2_sg.id
+  from_port         = 443
+  to_port           = 443
+  ip_protocol       = "tcp"
+  cidr_ipv4         = "0.0.0.0/0"
+  description       = "HTTPS (using aws_vpc_security_group_ingress_rule)"
+}
 
 # =====================================
 # パターン3: インライン + 両方の外部リソース（今回は検証不要）
